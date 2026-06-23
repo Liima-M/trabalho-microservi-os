@@ -1,7 +1,7 @@
 # trabEcommerce — E-commerce Marketplace com Microsserviços
 
 **UDESC CEAVI | Engenharia de Software Orientada a Serviços**  
-Discentes: Matheus Teixeira · Mailon Barbetta · Elian Benck · Matheus Oliver
+Discentes:  Elian Benck · Mailon Barbetta · Matheus Oliver · Matheus Teixeira
 
 ---
 
