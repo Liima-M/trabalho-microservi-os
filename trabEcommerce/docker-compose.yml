@@ -1,0 +1,417 @@
+version: "3.9"
+
+# ============================================================
+# E-commerce Marketplace — Docker Compose
+# UDESC CEAVI — Engenharia de Software Orientada a Serviços
+#
+# Uso: docker compose up --build
+# RabbitMQ UI: http://localhost:15672 (guest/guest)
+# API Gateway:  http://localhost:8080
+# ============================================================
+
+x-db-common: &db-common
+  image: postgres:16-alpine
+  environment:
+    POSTGRES_USER: postgres
+    POSTGRES_PASSWORD: postgres
+  healthcheck:
+    test: ["CMD-SHELL", "pg_isready -U postgres"]
+    interval: 10s
+    timeout: 5s
+    retries: 5
+  restart: unless-stopped
+
+networks:
+  ecommerce-net:
+    driver: bridge
+
+services:
+
+  # ── MESSAGE BROKER ──────────────────────────────────────────
+  rabbitmq:
+    image: rabbitmq:3.13-management-alpine
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"   # RabbitMQ Management UI
+    environment:
+      RABBITMQ_DEFAULT_USER: ${RABBITMQ_USER:-guest}
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASS:-guest}
+    volumes:
+      - rabbitmq-data:/var/lib/rabbitmq
+    networks:
+      - ecommerce-net
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "ping"]
+      interval: 15s
+      timeout: 10s
+      retries: 5
+    restart: unless-stopped
+
+  # ── DATABASES (Database per Service — RNF07) ────────────────
+  auth-db:
+    <<: *db-common
+    container_name: auth-db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: auth_db
+    volumes:
+      - auth-db-data:/var/lib/postgresql/data
+    networks:
+      - ecommerce-net
+
+  catalog-db:
+    <<: *db-common
+    container_name: catalog-db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: catalog_db
+    volumes:
+      - catalog-db-data:/var/lib/postgresql/data
+    networks:
+      - ecommerce-net
+
+  inventory-db:
+    <<: *db-common
+    container_name: inventory-db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: inventory_db
+    volumes:
+      - inventory-db-data:/var/lib/postgresql/data
+    networks:
+      - ecommerce-net
+
+  cart-db:
+    <<: *db-common
+    container_name: cart-db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: cart_db
+    volumes:
+      - cart-db-data:/var/lib/postgresql/data
+    networks:
+      - ecommerce-net
+
+  order-db:
+    <<: *db-common
+    container_name: order-db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: order_db
+    volumes:
+      - order-db-data:/var/lib/postgresql/data
+    networks:
+      - ecommerce-net
+
+  payment-db:
+    <<: *db-common
+    container_name: payment-db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: payment_db
+    volumes:
+      - payment-db-data:/var/lib/postgresql/data
+    networks:
+      - ecommerce-net
+
+  shipping-db:
+    <<: *db-common
+    container_name: shipping-db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: shipping_db
+    volumes:
+      - shipping-db-data:/var/lib/postgresql/data
+    networks:
+      - ecommerce-net
+
+  review-db:
+    <<: *db-common
+    container_name: review-db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: review_db
+    volumes:
+      - review-db-data:/var/lib/postgresql/data
+    networks:
+      - ecommerce-net
+
+  notification-db:
+    <<: *db-common
+    container_name: notification-db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: notification_db
+    volumes:
+      - notification-db-data:/var/lib/postgresql/data
+    networks:
+      - ecommerce-net
+
+  # MongoDB — review-service (lado QUERY do CQRS)
+  review-mongo:
+    image: mongo:7-jammy
+    container_name: review-mongo
+    environment:
+      MONGO_INITDB_DATABASE: review_query_db
+    volumes:
+      - review-mongo-data:/data/db
+    networks:
+      - ecommerce-net
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  # ── MICROSSERVIÇOS ───────────────────────────────────────────
+  auth-service:
+    build:
+      context: ./auth-service
+      dockerfile: Dockerfile
+    container_name: auth-service
+    ports:
+      - "8081:8081"
+    environment:
+      DB_HOST: auth-db
+      DB_NAME: auth_db
+      DB_USER: postgres
+      DB_PASS: postgres
+      RABBITMQ_HOST: rabbitmq
+      JWT_SECRET: ${JWT_SECRET:-changeme-super-secret-key-at-least-256-bits-long!!}
+    depends_on:
+      auth-db:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+    networks:
+      - ecommerce-net
+    restart: unless-stopped
+
+  catalog-service:
+    build:
+      context: ./catalog-service
+      dockerfile: Dockerfile
+    container_name: catalog-service
+    ports:
+      - "8082:8082"
+    environment:
+      DB_HOST: catalog-db
+      DB_NAME: catalog_db
+      DB_USER: postgres
+      DB_PASS: postgres
+      RABBITMQ_HOST: rabbitmq
+    depends_on:
+      catalog-db:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+    networks:
+      - ecommerce-net
+    restart: unless-stopped
+
+  inventory-service:
+    build:
+      context: ./inventory-service
+      dockerfile: Dockerfile
+    container_name: inventory-service
+    ports:
+      - "8083:8083"
+    environment:
+      DB_HOST: inventory-db
+      DB_NAME: inventory_db
+      DB_USER: postgres
+      DB_PASS: postgres
+      RABBITMQ_HOST: rabbitmq
+    depends_on:
+      inventory-db:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+    networks:
+      - ecommerce-net
+    restart: unless-stopped
+
+  cart-service:
+    build:
+      context: ./cart-service
+      dockerfile: Dockerfile
+    container_name: cart-service
+    ports:
+      - "8084:8084"
+    environment:
+      DB_HOST: cart-db
+      DB_NAME: cart_db
+      DB_USER: postgres
+      DB_PASS: postgres
+      RABBITMQ_HOST: rabbitmq
+    depends_on:
+      cart-db:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+    networks:
+      - ecommerce-net
+    restart: unless-stopped
+
+  order-service:
+    build:
+      context: ./order-service
+      dockerfile: Dockerfile
+    container_name: order-service
+    ports:
+      - "8085:8085"
+    environment:
+      DB_HOST: order-db
+      DB_NAME: order_db
+      DB_USER: postgres
+      DB_PASS: postgres
+      RABBITMQ_HOST: rabbitmq
+    depends_on:
+      order-db:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+    networks:
+      - ecommerce-net
+    restart: unless-stopped
+
+  payment-service:
+    build:
+      context: ./payment-service
+      dockerfile: Dockerfile
+    container_name: payment-service
+    ports:
+      - "8086:8086"
+    environment:
+      DB_HOST: payment-db
+      DB_NAME: payment_db
+      DB_USER: postgres
+      DB_PASS: postgres
+      RABBITMQ_HOST: rabbitmq
+    depends_on:
+      payment-db:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+    networks:
+      - ecommerce-net
+    restart: unless-stopped
+
+  shipping-service:
+    build:
+      context: ./shipping-service
+      dockerfile: Dockerfile
+    container_name: shipping-service
+    ports:
+      - "8087:8087"
+    environment:
+      DB_HOST: shipping-db
+      DB_NAME: shipping_db
+      DB_USER: postgres
+      DB_PASS: postgres
+      RABBITMQ_HOST: rabbitmq
+    depends_on:
+      shipping-db:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+    networks:
+      - ecommerce-net
+    restart: unless-stopped
+
+  review-service:
+    build:
+      context: ./review-service
+      dockerfile: Dockerfile
+    container_name: review-service
+    ports:
+      - "8088:8088"
+    environment:
+      DB_HOST: review-db
+      DB_NAME: review_db
+      DB_USER: postgres
+      DB_PASS: postgres
+      MONGO_HOST: review-mongo
+      MONGO_DB: review_query_db
+      RABBITMQ_HOST: rabbitmq
+    depends_on:
+      review-db:
+        condition: service_healthy
+      review-mongo:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+    networks:
+      - ecommerce-net
+    restart: unless-stopped
+
+  notification-service:
+    build:
+      context: ./notification-service
+      dockerfile: Dockerfile
+    container_name: notification-service
+    ports:
+      - "8089:8089"
+    environment:
+      DB_HOST: notification-db
+      DB_NAME: notification_db
+      DB_USER: postgres
+      DB_PASS: postgres
+      RABBITMQ_HOST: rabbitmq
+    depends_on:
+      notification-db:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+    networks:
+      - ecommerce-net
+    restart: unless-stopped
+
+  # ── API GATEWAY (ponto único de entrada — RNF17) ─────────────
+  api-gateway:
+    build:
+      context: ./api-gateway
+      dockerfile: Dockerfile
+    container_name: api-gateway
+    ports:
+      - "8080:8080"   # único serviço exposto externamente
+    environment:
+      JWT_SECRET: ${JWT_SECRET:-changeme-super-secret-key-at-least-256-bits-long!!}
+    depends_on:
+      - auth-service
+      - catalog-service
+      - inventory-service
+      - cart-service
+      - order-service
+      - payment-service
+      - shipping-service
+      - review-service
+      - notification-service
+    networks:
+      - ecommerce-net
+    restart: unless-stopped
+
+# ── VOLUMES ──────────────────────────────────────────────────
+volumes:
+  rabbitmq-data:
+  auth-db-data:
+  catalog-db-data:
+  inventory-db-data:
+  cart-db-data:
+  order-db-data:
+  payment-db-data:
+  shipping-db-data:
+  review-db-data:
+  notification-db-data:
+  review-mongo-data:

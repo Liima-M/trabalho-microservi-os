@@ -1,0 +1,17 @@
+br\edu\udesc\ecommerce\order\domain\model\OrderStatus.class
+br\edu\udesc\ecommerce\order\domain\model\Order.class
+br\edu\udesc\ecommerce\order\application\usecase\CancelOrderService.class
+br\edu\udesc\ecommerce\order\domain\port\in\CancelOrderUseCase.class
+br\edu\udesc\ecommerce\order\domain\port\in\GetOrderUseCase.class
+br\edu\udesc\ecommerce\order\domain\saga\SagaStep.class
+br\edu\udesc\ecommerce\order\OrderServiceApplication.class
+br\edu\udesc\ecommerce\order\domain\port\out\OrderRepository.class
+br\edu\udesc\ecommerce\order\application\saga\CheckoutSagaOrchestrator.class
+br\edu\udesc\ecommerce\order\domain\model\OrderItem$OrderItemBuilder.class
+br\edu\udesc\ecommerce\order\domain\port\in\CreateOrderUseCase.class
+br\edu\udesc\ecommerce\order\application\usecase\CreateOrderService.class
+br\edu\udesc\ecommerce\order\domain\model\Order$OrderBuilder.class
+br\edu\udesc\ecommerce\order\domain\model\OrderItem.class
+br\edu\udesc\ecommerce\order\presentation\rest\OrderController.class
+br\edu\udesc\ecommerce\order\domain\model\PaymentMethod.class
+br\edu\udesc\ecommerce\order\domain\port\out\EventPublisher.class

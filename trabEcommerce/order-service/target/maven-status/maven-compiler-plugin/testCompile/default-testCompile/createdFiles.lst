@@ -1,0 +1,2 @@
+br\edu\udesc\ecommerce\order\domain\OrderTest.class
+br\edu\udesc\ecommerce\order\application\CancelOrderServiceTest.class

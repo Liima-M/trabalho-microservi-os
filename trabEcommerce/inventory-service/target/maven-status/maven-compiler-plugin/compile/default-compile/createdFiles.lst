@@ -1,0 +1,15 @@
+br\edu\udesc\ecommerce\inventory\domain\model\Stock.class
+br\edu\udesc\ecommerce\inventory\domain\model\StockReservation$StockReservationBuilder.class
+br\edu\udesc\ecommerce\inventory\domain\model\StockReservation.class
+br\edu\udesc\ecommerce\inventory\domain\port\out\StockReservationRepository.class
+br\edu\udesc\ecommerce\inventory\presentation\rest\InventoryController.class
+br\edu\udesc\ecommerce\inventory\application\usecase\CheckAvailabilityService.class
+br\edu\udesc\ecommerce\inventory\domain\port\in\ConfirmReservationUseCase.class
+br\edu\udesc\ecommerce\inventory\domain\port\in\ReserveStockUseCase.class
+br\edu\udesc\ecommerce\inventory\domain\port\out\StockRepository.class
+br\edu\udesc\ecommerce\inventory\InventoryServiceApplication.class
+br\edu\udesc\ecommerce\inventory\domain\model\Stock$StockBuilder.class
+br\edu\udesc\ecommerce\inventory\domain\port\in\ReleaseReservationUseCase.class
+br\edu\udesc\ecommerce\inventory\application\usecase\ReserveStockService.class
+br\edu\udesc\ecommerce\inventory\domain\port\in\CheckAvailabilityUseCase.class
+br\edu\udesc\ecommerce\inventory\domain\model\ReservationStatus.class

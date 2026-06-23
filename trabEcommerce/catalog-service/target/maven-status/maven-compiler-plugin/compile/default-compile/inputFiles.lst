@@ -1,0 +1,17 @@
+E:\trabMicroserviço\trabEcommerce\catalog-service\src\main\java\br\edu\udesc\ecommerce\catalog\application\usecase\CreateProductService.java
+E:\trabMicroserviço\trabEcommerce\catalog-service\src\main\java\br\edu\udesc\ecommerce\catalog\application\usecase\GetProductService.java
+E:\trabMicroserviço\trabEcommerce\catalog-service\src\main\java\br\edu\udesc\ecommerce\catalog\application\usecase\SearchProductService.java
+E:\trabMicroserviço\trabEcommerce\catalog-service\src\main\java\br\edu\udesc\ecommerce\catalog\CatalogServiceApplication.java
+E:\trabMicroserviço\trabEcommerce\catalog-service\src\main\java\br\edu\udesc\ecommerce\catalog\domain\model\Category.java
+E:\trabMicroserviço\trabEcommerce\catalog-service\src\main\java\br\edu\udesc\ecommerce\catalog\domain\model\Product.java
+E:\trabMicroserviço\trabEcommerce\catalog-service\src\main\java\br\edu\udesc\ecommerce\catalog\domain\port\in\CreateProductUseCase.java
+E:\trabMicroserviço\trabEcommerce\catalog-service\src\main\java\br\edu\udesc\ecommerce\catalog\domain\port\in\GetProductUseCase.java
+E:\trabMicroserviço\trabEcommerce\catalog-service\src\main\java\br\edu\udesc\ecommerce\catalog\domain\port\in\SearchProductUseCase.java
+E:\trabMicroserviço\trabEcommerce\catalog-service\src\main\java\br\edu\udesc\ecommerce\catalog\domain\port\out\CategoryRepository.java
+E:\trabMicroserviço\trabEcommerce\catalog-service\src\main\java\br\edu\udesc\ecommerce\catalog\domain\port\out\EventPublisher.java
+E:\trabMicroserviço\trabEcommerce\catalog-service\src\main\java\br\edu\udesc\ecommerce\catalog\domain\port\out\ProductRepository.java
+E:\trabMicroserviço\trabEcommerce\catalog-service\src\main\java\br\edu\udesc\ecommerce\catalog\domain\strategy\ProductSearchCriteria.java
+E:\trabMicroserviço\trabEcommerce\catalog-service\src\main\java\br\edu\udesc\ecommerce\catalog\domain\strategy\ProductSearchStrategy.java
+E:\trabMicroserviço\trabEcommerce\catalog-service\src\main\java\br\edu\udesc\ecommerce\catalog\domain\strategy\SearchByCategoryAndPriceStrategy.java
+E:\trabMicroserviço\trabEcommerce\catalog-service\src\main\java\br\edu\udesc\ecommerce\catalog\domain\strategy\SearchByNameStrategy.java
+E:\trabMicroserviço\trabEcommerce\catalog-service\src\main\java\br\edu\udesc\ecommerce\catalog\presentation\rest\ProductController.java

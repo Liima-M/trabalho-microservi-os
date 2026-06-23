@@ -1,0 +1,3 @@
+br\edu\udesc\ecommerce\gateway\ApiGatewayApplication.class
+br\edu\udesc\ecommerce\gateway\filter\JwtAuthenticationFilter.class
+br\edu\udesc\ecommerce\gateway\filter\LoggingFilter.class

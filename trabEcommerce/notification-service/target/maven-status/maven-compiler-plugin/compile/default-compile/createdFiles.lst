@@ -1,0 +1,12 @@
+br\edu\udesc\ecommerce\notification\domain\port\in\SendNotificationUseCase.class
+br\edu\udesc\ecommerce\notification\domain\model\NotificationType.class
+br\edu\udesc\ecommerce\notification\domain\port\out\NotificationRepository.class
+br\edu\udesc\ecommerce\notification\NotificationServiceApplication.class
+br\edu\udesc\ecommerce\notification\domain\port\in\GetNotificationsUseCase.class
+br\edu\udesc\ecommerce\notification\infrastructure\messaging\OrderEventConsumer.class
+br\edu\udesc\ecommerce\notification\domain\model\Notification$NotificationBuilder.class
+br\edu\udesc\ecommerce\notification\domain\model\Notification.class
+br\edu\udesc\ecommerce\notification\infrastructure\messaging\RabbitMQConfig.class
+br\edu\udesc\ecommerce\notification\application\usecase\GetNotificationsService.class
+br\edu\udesc\ecommerce\notification\application\usecase\SendNotificationService.class
+br\edu\udesc\ecommerce\notification\presentation\rest\NotificationController.class

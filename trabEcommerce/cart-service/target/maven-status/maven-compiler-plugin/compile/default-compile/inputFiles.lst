@@ -1,0 +1,12 @@
+E:\trabMicroserviço\trabEcommerce\cart-service\src\main\java\br\edu\udesc\ecommerce\cart\application\usecase\AddItemToCartService.java
+E:\trabMicroserviço\trabEcommerce\cart-service\src\main\java\br\edu\udesc\ecommerce\cart\application\usecase\ClearCartService.java
+E:\trabMicroserviço\trabEcommerce\cart-service\src\main\java\br\edu\udesc\ecommerce\cart\application\usecase\GetCartService.java
+E:\trabMicroserviço\trabEcommerce\cart-service\src\main\java\br\edu\udesc\ecommerce\cart\CartServiceApplication.java
+E:\trabMicroserviço\trabEcommerce\cart-service\src\main\java\br\edu\udesc\ecommerce\cart\domain\model\Cart.java
+E:\trabMicroserviço\trabEcommerce\cart-service\src\main\java\br\edu\udesc\ecommerce\cart\domain\model\CartItem.java
+E:\trabMicroserviço\trabEcommerce\cart-service\src\main\java\br\edu\udesc\ecommerce\cart\domain\port\in\AddItemToCartUseCase.java
+E:\trabMicroserviço\trabEcommerce\cart-service\src\main\java\br\edu\udesc\ecommerce\cart\domain\port\in\ClearCartUseCase.java
+E:\trabMicroserviço\trabEcommerce\cart-service\src\main\java\br\edu\udesc\ecommerce\cart\domain\port\in\GetCartUseCase.java
+E:\trabMicroserviço\trabEcommerce\cart-service\src\main\java\br\edu\udesc\ecommerce\cart\domain\port\in\RemoveItemFromCartUseCase.java
+E:\trabMicroserviço\trabEcommerce\cart-service\src\main\java\br\edu\udesc\ecommerce\cart\domain\port\out\CartRepository.java
+E:\trabMicroserviço\trabEcommerce\cart-service\src\main\java\br\edu\udesc\ecommerce\cart\presentation\rest\CartController.java

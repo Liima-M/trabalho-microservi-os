@@ -1,0 +1,36 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(mvn *)",
+      "PowerShell(docker info *)",
+      "PowerShell($env:JAVA_HOME = \"C:\\\\Users\\\\mathe\\\\.jdks\\\\openjdk-22.0.2\"; $env:PATH = \"$env:JAVA_HOME\\\\bin;$env:PATH\"; Set-Location \"E:\\\\trabMicroserviço\\\\trabEcommerce\"; mvn test -pl auth-service,catalog-service,inventory-service,cart-service,order-service,payment-service,shipping-service,review-service,notification-service \"--am\" -Djacoco.skip=true 2>&1)",
+      "PowerShell(mvn test *)",
+      "PowerShell($file = \"C:\\\\Users\\\\mathe\\\\.claude\\\\projects\\\\E--trabMicroservi-o\\\\73ed5914-7a2f-4ded-af8d-6fe98fe89ca6\\\\tool-results\\\\b9res43ra.txt\"; $lines = Get-Content $file; $total = $lines.Count; $lines[\\($total-150\\)..\\($total-1\\)] -join \"`n\")",
+      "PowerShell(Select-String *)",
+      "PowerShell(docker compose *)",
+      "PowerShell(Get-PSDrive | Where-Object { $_.Provider -match \"FileSystem\" } | Select-Object Name, @{N=\"Used\\(GB\\)\";E={[math]::Round\\($_.Used/1GB,2\\)}}, @{N=\"Free\\(GB\\)\";E={[math]::Round\\($_.Free/1GB,2\\)}})",
+      "PowerShell($ErrorActionPreference = \"Continue\"; Set-Location \"E:\\\\trabMicroserviço\\\\trabEcommerce\"; $output = & docker compose up -d rabbitmq auth-db catalog-db inventory-db cart-db order-db payment-db shipping-db review-db notification-db review-mongo 2>&1; $output | ForEach-Object { $_.ToString\\(\\) } | Select-Object -Last 30)",
+      "PowerShell($ErrorActionPreference = \"Continue\"; Set-Location \"E:\\\\trabMicroserviço\\\\trabEcommerce\"; $output = & docker compose build auth-service 2>&1; $output | ForEach-Object { $_.ToString\\(\\) } | Select-Object -Last 50)",
+      "PowerShell(mvn package *)",
+      "PowerShell($ErrorActionPreference = \"Continue\"; Set-Location \"E:\\\\trabMicroserviço\\\\trabEcommerce\"; $output = & docker compose up --build -d 2>&1; $output | ForEach-Object { $_.ToString\\(\\) } | Select-String -Pattern \"Started|Created|Error|error|failed|FAILED|Built|built\" | Select-Object -Last 40)",
+      "PowerShell($ErrorActionPreference = \"Continue\"; Set-Location \"E:\\\\trabMicroserviço\\\\trabEcommerce\"; $output = & docker compose start auth-service catalog-service inventory-service cart-service order-service payment-service shipping-service review-service notification-service api-gateway 2>&1; $output | ForEach-Object { $_.ToString\\(\\) })",
+      "PowerShell(Invoke-WebRequest -Uri \"http://localhost:8081/actuator/health\" -UseBasicParsing -TimeoutSec 10 | Select-Object -ExpandProperty Content 2>&1)",
+      "PowerShell(Invoke-WebRequest -Uri \"http://localhost:8080/actuator/health\" -UseBasicParsing -TimeoutSec 10 | Select-Object -ExpandProperty Content 2>&1)",
+      "PowerShell(docker logs auth-service 2>&1 | Select-String -Pattern \"ERROR|Exception|FATAL|Started|exited\" | Select-Object -Last 20 | ForEach-Object { $_.Line })",
+      "PowerShell($ErrorActionPreference = \"Continue\"; Set-Location \"E:\\\\trabMicroserviço\\\\trabEcommerce\"; $output = & docker compose build auth-service catalog-service inventory-service cart-service order-service payment-service shipping-service review-service notification-service api-gateway 2>&1; $output | ForEach-Object { $_.ToString\\(\\) } | Select-String \"Built|ERROR|error\" | Select-Object -Last 20)",
+      "PowerShell($ErrorActionPreference = \"Continue\"; Set-Location \"E:\\\\trabMicroserviço\\\\trabEcommerce\"; $output = & docker compose up -d auth-service catalog-service inventory-service cart-service order-service payment-service shipping-service review-service notification-service api-gateway 2>&1; $output | ForEach-Object { $_.ToString\\(\\) } | Select-Object -Last 20)",
+      "PowerShell(docker start auth-service *)",
+      "PowerShell(docker logs auth-service 2>&1 | Select-String \"Started|ERROR|failed\" | Select-Object -Last 3 | ForEach-Object { $_.Line })",
+      "PowerShell(@\\(8081,8082,8083,8084,8085,8086,8087,8088,8089\\) | ForEach-Object { $port = $_; try { $r = Invoke-WebRequest -Uri \"http://localhost:$port/actuator/health\" -UseBasicParsing -TimeoutSec 5; \"Port $port`: $\\($r.StatusCode\\) - $\\($r.Content.Substring\\(0,[Math]::Min\\(40,$r.Content.Length\\)\\)\\)\" } catch { \"Port $port`: ERRO - $\\($_.Exception.Message.Split\\('.'\\)[0]\\)\" } })",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:8081/actuator/health)",
+      "Bash(curl -s http://localhost:8081/actuator/health)",
+      "PowerShell(docker exec auth-service *)",
+      "PowerShell(Test-NetConnection *)",
+      "PowerShell(curl.exe -s http://localhost:8081/actuator/health; Write-Host \"\"; curl.exe -s http://localhost:8082/actuator/health; Write-Host \"\"; curl.exe -s http://localhost:8083/actuator/health 2>&1)",
+      "PowerShell($result = curl.exe -s --max-time 30 \"http://localhost:8081/actuator/health\" 2>&1; \"Auth \\(8081\\): $result\"; $result2 = curl.exe -s --max-time 30 \"http://localhost:8082/actuator/health\" 2>&1; \"Catalog \\(8082\\): $result2\")",
+      "PowerShell($services = @\\(\"catalog-service\",\"inventory-service\",\"cart-service\",\"order-service\",\"payment-service\",\"shipping-service\",\"review-service\",\"notification-service\",\"api-gateway\"\\); foreach \\($s in $services\\) { $log = docker logs $s --tail 3 2>&1 | Select-String \"Started|ERROR|failed|Starting\" | Select-Object -Last 1; Write-Host \"$s`: $\\($log.Line.Trim\\(\\)\\)\" })",
+      "PowerShell(docker logs catalog-service 2>&1 | Select-String \"ERROR|Exception|FATAL|Started\" | Select-Object -Last 10 | ForEach-Object { $_.Line })",
+      "PowerShell(docker logs inventory-service 2>&1 | Select-String \"ERROR|Exception|FATAL|Started\" | Select-Object -Last 5 | ForEach-Object { $_.Line })"
+    ]
+  }
+}

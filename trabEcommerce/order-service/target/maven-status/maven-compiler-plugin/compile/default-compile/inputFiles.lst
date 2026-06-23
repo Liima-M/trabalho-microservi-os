@@ -1,0 +1,15 @@
+E:\trabMicroserviço\trabEcommerce\order-service\src\main\java\br\edu\udesc\ecommerce\order\application\saga\CheckoutSagaOrchestrator.java
+E:\trabMicroserviço\trabEcommerce\order-service\src\main\java\br\edu\udesc\ecommerce\order\application\usecase\CancelOrderService.java
+E:\trabMicroserviço\trabEcommerce\order-service\src\main\java\br\edu\udesc\ecommerce\order\application\usecase\CreateOrderService.java
+E:\trabMicroserviço\trabEcommerce\order-service\src\main\java\br\edu\udesc\ecommerce\order\domain\model\Order.java
+E:\trabMicroserviço\trabEcommerce\order-service\src\main\java\br\edu\udesc\ecommerce\order\domain\model\OrderItem.java
+E:\trabMicroserviço\trabEcommerce\order-service\src\main\java\br\edu\udesc\ecommerce\order\domain\model\OrderStatus.java
+E:\trabMicroserviço\trabEcommerce\order-service\src\main\java\br\edu\udesc\ecommerce\order\domain\model\PaymentMethod.java
+E:\trabMicroserviço\trabEcommerce\order-service\src\main\java\br\edu\udesc\ecommerce\order\domain\port\in\CancelOrderUseCase.java
+E:\trabMicroserviço\trabEcommerce\order-service\src\main\java\br\edu\udesc\ecommerce\order\domain\port\in\CreateOrderUseCase.java
+E:\trabMicroserviço\trabEcommerce\order-service\src\main\java\br\edu\udesc\ecommerce\order\domain\port\in\GetOrderUseCase.java
+E:\trabMicroserviço\trabEcommerce\order-service\src\main\java\br\edu\udesc\ecommerce\order\domain\port\out\EventPublisher.java
+E:\trabMicroserviço\trabEcommerce\order-service\src\main\java\br\edu\udesc\ecommerce\order\domain\port\out\OrderRepository.java
+E:\trabMicroserviço\trabEcommerce\order-service\src\main\java\br\edu\udesc\ecommerce\order\domain\saga\SagaStep.java
+E:\trabMicroserviço\trabEcommerce\order-service\src\main\java\br\edu\udesc\ecommerce\order\OrderServiceApplication.java
+E:\trabMicroserviço\trabEcommerce\order-service\src\main\java\br\edu\udesc\ecommerce\order\presentation\rest\OrderController.java

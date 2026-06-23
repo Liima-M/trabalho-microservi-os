@@ -1,0 +1,39 @@
+TESTE TRABCOMMERCE - 22/06/2026  0:12:35,02 
+ 
+=== 1. HEALTH CHECKS === 
+[8080]  
+[8081]  
+[8082]  
+[8083]  
+[8084]  
+[8085]  
+[8086]  
+[8087]  
+[8088]  
+[8089]  
+ 
+=== 2. REGISTRO DE USUARIO === 
+ 
+ 
+=== 3. LOGIN (direto auth-service:8081) === 
+ 
+TOKEN_EXTRAIDO: ~0,60... 
+ 
+=== 4. LOGIN VIA GATEWAY (porta 8080) === 
+ 
+ 
+=== 5. CATALOG via GATEWAY com token === 
+ 
+ 
+=== 6. SWAGGER UIs === 
+[8081] HTTP 000 
+[8082] HTTP 000 
+[8083] HTTP 000 
+[8084] HTTP 000 
+[8085] HTTP 000 
+[8086] HTTP 000 
+[8087] HTTP 000 
+[8088] HTTP 000 
+[8089] HTTP 000 
+ 
+=== CONCLUIDO === 

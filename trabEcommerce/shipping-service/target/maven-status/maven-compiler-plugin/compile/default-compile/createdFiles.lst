@@ -1,0 +1,14 @@
+br\edu\udesc\ecommerce\shipping\domain\port\out\ShipmentRepository.class
+br\edu\udesc\ecommerce\shipping\application\usecase\CalculateFreightService.class
+br\edu\udesc\ecommerce\shipping\presentation\rest\ShippingController.class
+br\edu\udesc\ecommerce\shipping\domain\model\Shipment.class
+br\edu\udesc\ecommerce\shipping\domain\port\in\CreateShipmentUseCase.class
+br\edu\udesc\ecommerce\shipping\domain\model\ShipmentStatus.class
+br\edu\udesc\ecommerce\shipping\ShippingServiceApplication.class
+br\edu\udesc\ecommerce\shipping\domain\port\in\UpdateShipmentStatusUseCase.class
+br\edu\udesc\ecommerce\shipping\domain\port\out\EventPublisher.class
+br\edu\udesc\ecommerce\shipping\domain\port\in\TrackShipmentUseCase.class
+br\edu\udesc\ecommerce\shipping\application\usecase\CreateShipmentService.class
+br\edu\udesc\ecommerce\shipping\domain\port\in\CalculateFreightUseCase.class
+br\edu\udesc\ecommerce\shipping\application\usecase\UpdateShipmentStatusService.class
+br\edu\udesc\ecommerce\shipping\domain\model\Shipment$ShipmentBuilder.class

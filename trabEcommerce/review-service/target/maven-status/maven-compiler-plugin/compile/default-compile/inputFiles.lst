@@ -1,0 +1,15 @@
+E:\trabMicroserviço\trabEcommerce\review-service\src\main\java\br\edu\udesc\ecommerce\review\application\projector\ReviewProjector.java
+E:\trabMicroserviço\trabEcommerce\review-service\src\main\java\br\edu\udesc\ecommerce\review\application\usecase\CreateReviewService.java
+E:\trabMicroserviço\trabEcommerce\review-service\src\main\java\br\edu\udesc\ecommerce\review\application\usecase\GetReviewsService.java
+E:\trabMicroserviço\trabEcommerce\review-service\src\main\java\br\edu\udesc\ecommerce\review\domain\model\Review.java
+E:\trabMicroserviço\trabEcommerce\review-service\src\main\java\br\edu\udesc\ecommerce\review\domain\model\ReviewProjection.java
+E:\trabMicroserviço\trabEcommerce\review-service\src\main\java\br\edu\udesc\ecommerce\review\domain\port\in\CreateReviewUseCase.java
+E:\trabMicroserviço\trabEcommerce\review-service\src\main\java\br\edu\udesc\ecommerce\review\domain\port\in\GetReviewsUseCase.java
+E:\trabMicroserviço\trabEcommerce\review-service\src\main\java\br\edu\udesc\ecommerce\review\domain\port\out\EventPublisher.java
+E:\trabMicroserviço\trabEcommerce\review-service\src\main\java\br\edu\udesc\ecommerce\review\domain\port\out\OrderServiceClient.java
+E:\trabMicroserviço\trabEcommerce\review-service\src\main\java\br\edu\udesc\ecommerce\review\domain\port\out\ReviewProjectionRepository.java
+E:\trabMicroserviço\trabEcommerce\review-service\src\main\java\br\edu\udesc\ecommerce\review\domain\port\out\ReviewRepository.java
+E:\trabMicroserviço\trabEcommerce\review-service\src\main\java\br\edu\udesc\ecommerce\review\infrastructure\persistence\mongo\ReviewMongoDocument.java
+E:\trabMicroserviço\trabEcommerce\review-service\src\main\java\br\edu\udesc\ecommerce\review\infrastructure\persistence\mongo\ReviewMongoRepository.java
+E:\trabMicroserviço\trabEcommerce\review-service\src\main\java\br\edu\udesc\ecommerce\review\presentation\rest\ReviewController.java
+E:\trabMicroserviço\trabEcommerce\review-service\src\main\java\br\edu\udesc\ecommerce\review\ReviewServiceApplication.java
