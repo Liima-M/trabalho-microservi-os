@@ -28,7 +28,7 @@ Cliente → API Gateway (8080)
 | Elian Benck | payment, shipping | Circuit Breaker | Factory Method |
 | Matheus Oliver | review, notification | CQRS | Observer |
 
----
+-----
 
 ## Como executar
 
